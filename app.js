@@ -48,3 +48,34 @@ let myFifthTimeout = setTimeout(() => {
   let word4 = "word four";
   getWords(word4);
 }, 6000);
+
+/**
+ * *Callbacks and Recursion
+ *
+ *? Create a function called done that logs Job's done! to the console
+ *
+ *? Create a different function (on the global scope) called countdown that accepts two arguments, num and callback
+ *? The goal of this function will be to log a "countdown" from the number passed in as an argument, delayed by 1 second each time, and when it gets to 1, it should execute the callback argument
+ *? Hint: You'll need one setTimeout for this to work, an if/else statement, and NO for loop for this to work
+ *? Super Hint: You'll need to call countdown within itself, a concept called recursion
+ *? Mega Hint: There's a YouTube vid showing the concept off
+ *? Call the countdown function and pass it two arguments: a number of seconds to countdown from and the done function and see if it works
+ *
+ */
+
+function doneFunction() {
+  console.log(`Job's Done!`);
+}
+
+function countdown(num, callback) {
+  setTimeout(() => {
+    if (num > 0) {
+      console.log(num);
+      countdown(num - 1, callback);
+    } else {
+      callback();
+    }
+  }, 1000);
+}
+
+countdown(5, doneFunction);
